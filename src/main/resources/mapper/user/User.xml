@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.study.workOne.auth.mapper.UserMapper">
+	<select id="selectUserInfo" resultType="com.study.workOne.auth.dto.UserDto">
+		/** com.study.workOne.auth.mapper.UserMapper.selectUserInfo */
+		SELECT A.USER_ID
+		     , A.USER_PW
+		     , A.USER_NM
+		  FROM USER_INFO A
+		 WHERE A.USER_ID = #{userId} 
+	</select>
+	
+</mapper>

@@ -1,5 +1,6 @@
 package com.study.workOne.auth.controller;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,8 +30,18 @@ public class AuthController {
 	}
 	
 	@GetMapping("/check")
-	public ResponseEntity<?> checkSession(HttpSession session) {
-	    UserDto user = (UserDto) session.getAttribute("user");
-	    return user != null ? ResponseEntity.ok(user) : ResponseEntity.status(401).body("로그인 필요");
+	public ResponseEntity<?> checkLogin(HttpSession session) {
+	    Object user = session.getAttribute("user");
+	    if (user != null) {
+	        return ResponseEntity.ok().build(); // 로그인 O
+	    } else {
+	        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build(); // 로그인 X
+	    }
+	}
+	
+	@PostMapping("/logout")
+	public ResponseEntity<?> logout(HttpSession session) {
+		session.invalidate(); // 세션 무효화
+		return ResponseEntity.ok().build();
 	}
 }

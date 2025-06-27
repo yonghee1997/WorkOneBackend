@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.study.workOne.common.code.mapper.CodeMapper">
+	<select id="selectCodeGroups" resultType="com.study.workOne.common.code.dto.CommonCode">
+		/** com.study.workOne.common.code.mapper.CodeMapper.selectCodeGroups */
+		SELECT CODE_ID
+		     , CODE_NM
+		     , DESCRIPTION
+		     , USE_YN
+		     , DATE_FORMAT(CREATE_DT, '%Y-%m-%d %H:%i:%s') AS CREATE_DT
+		     , CREATE_ID
+		     , DATE_FORMAT(UPDATE_DT, '%Y-%m-%d %H:%i:%s') AS UPDATE_DT
+		     , UPDATE_ID
+		  FROM COMMON_CODE
+	</select>
+	
+</mapper>

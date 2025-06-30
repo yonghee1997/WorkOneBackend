@@ -4,9 +4,9 @@ import lombok.Data;
 
 @Data
 public class CommonCodeDetail {
-	private String codeDetailId;
+	private Long codeDetailId;
     private String codeId;
-    private String detailName;
+    private String codeDetailNm;
     private String description;
     private Integer orderNo;
     private String useYn;

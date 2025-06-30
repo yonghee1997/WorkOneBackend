@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class CommonCode {
 	private String codeId;
-    private String codeName;
+    private String codeNm;
     private String description;
     private String useYn;
     private String createDt;

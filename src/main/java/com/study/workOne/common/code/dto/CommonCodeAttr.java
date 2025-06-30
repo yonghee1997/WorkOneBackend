@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class CommonCodeAttr {
-	private String codeAttrId;
+	private Long codeAttrId;
     private String codeId;
     private String attr1;
     private String attr2;

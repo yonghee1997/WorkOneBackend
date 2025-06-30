@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.study.workOne.common.code.mapper.CodeMapper">
-	<select id="selectCodeGroups" resultType="com.study.workOne.common.code.dto.CommonCode">
+	<select id="selectCodeGroupsList" resultType="com.study.workOne.common.code.dto.CommonCode">
 		/** com.study.workOne.common.code.mapper.CodeMapper.selectCodeGroups */
 		SELECT CODE_ID
 		     , CODE_NM
@@ -13,6 +13,36 @@
 		     , DATE_FORMAT(UPDATE_DT, '%Y-%m-%d %H:%i:%s') AS UPDATE_DT
 		     , UPDATE_ID
 		  FROM COMMON_CODE
+	</select>
+	
+	<select id="selectCodeDetailList" resultType="com.study.workOne.common.code.dto.CommonCodeDetail">
+		/** com.study.workOne.common.code.mapper.CodeMapper.selectCodeDetailList */
+		SELECT CODE_DETAIL_ID
+		     , CODE_ID
+		     , CODE_DETAIL_NM
+		     , ORDER_NO
+		     , USE_YN
+		     , DATE_FORMAT(CREATE_DT, '%Y-%m-%d %H:%i:%s') AS CREATE_DT
+		     , CREATE_ID
+		     , DATE_FORMAT(UPDATE_DT, '%Y-%m-%d %H:%i:%s') AS UPDATE_DT
+		     , UPDATE_ID
+		  FROM COMMON_CODE_DETAIL
+	</select>
+	
+	<select id="selectCodeAttrList" resultType="com.study.workOne.common.code.dto.CommonCodeAttr">
+		/** com.study.workOne.common.code.mapper.CodeMapper.selectCodeAttrList */
+		SELECT CODE_ATTR_ID
+			 , CODE_ID
+			 , CODE_DETAIL_ID
+			 , ATTR1
+			 , ATTR2
+			 , ATTR3
+			 , USE_YN
+			 , DATE_FORMAT(CREATE_DT, '%Y-%m-%d %H:%i:%s') AS CREATE_DT
+			 , CREATE_ID
+			 , DATE_FORMAT(UPDATE_DT, '%Y-%m-%d %H:%i:%s') AS UPDATE_DT
+			 , UPDATE_ID
+		  FROM COMMON_CODE_ATTR
 	</select>
 	
 </mapper>

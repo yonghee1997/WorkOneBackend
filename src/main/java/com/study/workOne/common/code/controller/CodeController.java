@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,6 +14,7 @@ import com.study.workOne.common.code.dto.CommonCode;
 import com.study.workOne.common.code.dto.CommonCodeAttr;
 import com.study.workOne.common.code.dto.CommonCodeDetail;
 import com.study.workOne.common.code.service.CodeService;
+import com.study.workOne.result.SaveResult;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -41,6 +44,13 @@ public class CodeController {
 		List<CommonCodeAttr> list = codeService.getCodeAttrList(codeId);
 		return ResponseEntity.ok(list);
 	}
+	
+	@PostMapping("/save")
+    public ResponseEntity<SaveResult> saveCommonCodes(@RequestBody List<CommonCode> codeList) {
+		SaveResult result = codeService.saveCommonCodes(codeList);
+        return ResponseEntity.ok(result);
+    }
+	
 	
 }
 

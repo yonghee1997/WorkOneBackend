@@ -5,6 +5,7 @@
 	<select id="selectCodeGroupsList" resultType="com.study.workOne.common.code.dto.CommonCode">
 		/** com.study.workOne.common.code.mapper.CodeMapper.selectCodeGroups */
 		SELECT CODE_ID
+		     , CODE_ID AS ID
 		     , CODE_NM
 		     , DESCRIPTION
 		     , USE_YN
@@ -13,6 +14,7 @@
 		     , DATE_FORMAT(UPDATE_DT, '%Y-%m-%d %H:%i:%s') AS UPDATE_DT
 		     , UPDATE_ID
 		  FROM COMMON_CODE
+	  ORDER BY CODE_ID
 	</select>
 	
 	<select id="selectCodeDetailList" resultType="com.study.workOne.common.code.dto.CommonCodeDetail">
@@ -44,5 +46,30 @@
 			 , UPDATE_ID
 		  FROM COMMON_CODE_ATTR
 	</select>
+	
+	<insert id="saveCommonCode">
+	 INSERT INTO COMMON_CODE (
+	    CODE_ID,
+	    CODE_NM,
+	    DESCRIPTION,
+	    USE_YN,
+	    CREATE_DT,
+	    CREATE_ID
+	  )
+	  VALUES (
+	    #{codeId},
+	    #{codeNm},
+	    #{description},
+	    #{useYn},
+	    NOW(),
+	    #{createId}
+	  )
+	  ON DUPLICATE KEY UPDATE
+	    CODE_NM = #{codeNm},
+	    DESCRIPTION = #{description},
+	    USE_YN = #{useYn},
+	    UPDATE_DT = NOW(),
+	    UPDATE_ID = #{updateId}
+	</insert>
 	
 </mapper>

@@ -16,4 +16,6 @@ public interface CodeMapper {
 	List<CommonCodeDetail> selectCodeDetailList(String codeId);
 	
 	List<CommonCodeAttr> selectCodeAttrList(String codeId);
+	
+	int saveCommonCode(CommonCode code);
 }
